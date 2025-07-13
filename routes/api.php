@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublikasiController;
 
-
+// Rute Publik (Tidak perlu login)
 Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']); // <-- TAMBAHKAN RUTE INI
 
+// Rute Terproteksi (Harus login)
 Route::middleware('auth:sanctum')->group(function () {
     
     Route::get('/user', function (Request $request){
