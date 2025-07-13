@@ -10,34 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // Login method to authenticate users
-    public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-        if (!Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Login gagal'], 401);
-        }
-        
-        /** @var \App\Models\User $user */
-        $user = Auth::user();
-        $token = $user->createToken('api-token')->plainTextToken;
-
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-        ]);
-    }
-
-    //penambahan fungsi untuk mekanisme logout
-    public function logout(Request $request) {
-        //menghapus token yang sedang dipakai untuk request saat ini
-        $request->user()->currentAccessToken()->delete();
-        return response()->json(['message'=> 'Berhasil logout']);
-    }
-
     public function register(Request $request)
     {
         // 2. Validasi input dari frontend
@@ -88,4 +60,6 @@ class AuthController extends Controller
             'message' => 'Logout berhasil'
         ]);
     }
+
+
 }
