@@ -2,7 +2,7 @@
 return [
     'paths' => ['api/*'],
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['http://localhost:5173', 'https://bps-bengkulu-kaylla-pi.vercel.app'],
+    'allowed_origins' => ['http://localhost:5173', 'https://bps-bengkulu.vercel.app'],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],
